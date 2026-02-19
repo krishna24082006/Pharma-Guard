@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeneWise Health - Pharmacogenomics Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <h1 class="app-title">GeneWise Health</h1>
+                <p class="app-subtitle">Personalized Pharmacogenomics Analysis</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Input Section -->
+        <section class="input-section">
+            <div class="card">
+                <h2 class="section-title">Genetic Analysis</h2>
+                <form id="analysisForm" class="analysis-form">
+                    <div class="form-group">
+                        <label for="vcfFile" class="form-label">
+                            Upload VCF File
+                            <span class="required">*</span>
+                        </label>
+                        <div class="file-input-wrapper">
+                            <input
+                                type="file"
+                                id="vcfFile"
+                                name="vcfFile"
+                                accept=".vcf,.vcf.gz,.txt"
+                                class="file-input"
+                                required
+                            >
+                            <span class="file-input-label" id="fileName">Choose VCF file...</span>
+                        </div>
+                        <p class="field-hint">Accepted formats: VCF, VCF.GZ, TXT</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="drugName" class="form-label">
+                            Medicine Name
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="drugName"
+                            name="drugName"
+                            placeholder="e.g., Warfarin, Clopidogrel, Codeine"
+                            class="text-input"
+                            required
+                        >
+                        <p class="field-hint">Enter the medication you want to analyze</p>
+                    </div>
+
+                    <button type="submit" class="analyze-button">
+                        Analyze
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Loading Section -->
+        <section id="loadingSection" class="loading-section hidden">
+            <div class="loader-container">
+                <div class="spinner"></div>
+                <p class="loading-text">Analyzing your genetic data...</p>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="results-section hidden">
+            <!-- Results Header -->
+            <div class="results-header">
+                <h2>Analysis Results</h2>
+                <button type="button" class="new-analysis-button" onclick="resetForm()">
+                    New Analysis
+                </button>
+            </div>
+
+            <!-- Primary Results Card -->
+            <div class="card results-card">
+                <div class="results-grid">
+                    <div class="result-item">
+                        <h3 class="result-label">Gene</h3>
+                        <p class="result-value" id="resultGene">—</p>
+                    </div>
+                    <div class="result-item">
+                        <h3 class="result-label">Variant Status</h3>
+                        <p class="result-value" id="resultVariant">—</p>
+                    </div>
+                    <div class="result-item">
+                        <h3 class="result-label">Medication</h3>
+                        <p class="result-value" id="resultDrug">—</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Assessment Card -->
+            <div class="card risk-card">
+                <h3 class="card-title">Risk Assessment</h3>
+                <div class="risk-container">
+                    <div class="risk-badge" id="riskBadge">
+                        <span class="risk-label">Risk Level: </span>
+                        <span class="risk-value" id="riskValue">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendation Card -->
+            <div class="card recommendation-card">
+                <h3 class="card-title">Clinical Recommendation</h3>
+                <div class="recommendation-content" id="resultRecommendation">
+                    —
+                </div>
+            </div>
+
+            <!-- AI Clinical Explanation Card -->
+            <div class="card explanation-card">
+                <h3 class="card-title">AI Clinical Explanation</h3>
+                <div class="explanation-content" id="resultExplanation">
+                    —
+                </div>
+            </div>
+        </section>
+
+        <!-- Error Section -->
+        <section id="errorSection" class="error-section hidden">
+            <div class="card error-card">
+                <h3 class="error-title">Error</h3>
+                <p class="error-message" id="errorMessage">—</p>
+                <button type="button" class="error-dismiss-button" onclick="dismissError()">
+                    Dismiss
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Disclaimer -->
+    <footer class="footer">
+        <div class="disclaimer">
+            <p>
+                <strong>Medical Disclaimer:</strong> This tool is for decision support only and does not replace professional medical advice.
+                Always consult with a qualified healthcare provider before making medication decisions.
+            </p>
+        </div>
+    </footer>
+<link rel="stylesheet" href="styles.css">
+<script src="app.js"></script>
+    
+</body>
+</html>
