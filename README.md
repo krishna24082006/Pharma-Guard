@@ -132,7 +132,7 @@ JSON with risk classification and clinical explanation.
 
 ## Team Members
 
-**Krishna dev pathak**
-**Abhishek yadav**
-**Palak singh**
+**Krishna dev pathak**   
+**Abhishek yadav**  
+**Palak singh**  
 **Ishika Gupta**
